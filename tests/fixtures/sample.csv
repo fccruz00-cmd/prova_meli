@@ -1,0 +1,3 @@
+timestamp,http_staus,http_host,http_uri,http_method,http_referer,http_user_agent,source_ip
+2025-31-12T23:59,200,mercadolibre.com,/invoices/search?invoice_id=100&site_id=MeliBR&authtoken=secret-a,GET,https://mercadolibre.com/billing,crawler4j,203.0.113.10
+2025-01-10T00:00,401,mercadolibre.com,/invoices/search?invoice_id=101&site_id=MeliMX&authtoken=secret-b,GET,,Mozilla/5.0,198.51.100.8

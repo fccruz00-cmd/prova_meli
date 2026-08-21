@@ -1,0 +1,63 @@
+{
+  "generated_at_utc": "2026-08-21T15:47:52.508118+00:00",
+  "classification": "HIGH confidence of automated IDOR exploitation; MEDIUM confidence of PII disclosure",
+  "overview": {
+    "row_count": 4478619,
+    "invalid_timestamps": 0,
+    "first_event": "2025-10-01T00:00:00",
+    "last_event": "2025-12-31T23:59:00",
+    "unique_ips": 5726,
+    "unique_invoices": 10233,
+    "unique_tokens": 35,
+    "unique_sites": 4
+  },
+  "suspected_exploitation": {
+    "suspect_ips": 5,
+    "requests": 61961,
+    "unique_invoices": 10181,
+    "unique_tokens": 4,
+    "status_200": 44868,
+    "invoices_status_200": 10173,
+    "status_2xx": 48827,
+    "first_seen": "2025-10-01T00:00:00",
+    "last_seen": "2025-12-31T23:57:00"
+  },
+  "monthly_suspected_activity": [
+    {
+      "month": "2025-10",
+      "requests": 1488,
+      "unique_invoices": 1044,
+      "status_200": 0
+    },
+    {
+      "month": "2025-11",
+      "requests": 15120,
+      "unique_invoices": 1998,
+      "status_200": 3039
+    },
+    {
+      "month": "2025-12",
+      "requests": 45353,
+      "unique_invoices": 10179,
+      "status_200": 41829
+    }
+  ],
+  "site_by_request_volume": {
+    "site_id": "MeliCO",
+    "requests": 1120465,
+    "unique_invoices": 8307,
+    "unique_ips": 5726,
+    "status_200": 196794,
+    "success_2xx_pct": 50.44
+  },
+  "site_by_unique_invoice": {
+    "site_id": "MeliMX",
+    "requests": 1120006,
+    "unique_invoices": 8320,
+    "unique_ips": 5726,
+    "status_200": 196673,
+    "success_2xx_pct": 50.44
+  },
+  "privacy_note": "Public outputs mask IP addresses and SHA-256 fingerprint auth tokens; restricted raw rankings are not committed.",
+  "geo_source": "ipwho.is point-in-time lookup; enrichment is contextual, not attribution evidence"
+}
