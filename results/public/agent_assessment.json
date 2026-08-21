@@ -1,0 +1,82 @@
+{
+  "mode": "deterministic-safe-fallback",
+  "plan": [
+    "Classify the observed pattern and confidence",
+    "Build the technical timeline",
+    "Estimate conservative business impact",
+    "Identify visibility gaps and next evidence sources",
+    "Prioritize containment and strategic controls"
+  ],
+  "evidence_catalog": {
+    "EVID-001": {
+      "claim": "A fully automated cluster queried the vulnerable endpoint at scale.",
+      "facts": {
+        "suspect_ips": 5,
+        "requests": 61961,
+        "unique_tokens": 4,
+        "unique_invoices": 10181
+      }
+    },
+    "EVID-002": {
+      "claim": "The automated activity escalated month over month.",
+      "facts": [
+        {
+          "month": "2025-10",
+          "requests": 1488,
+          "unique_invoices": 1044,
+          "status_200": 0
+        },
+        {
+          "month": "2025-11",
+          "requests": 15120,
+          "unique_invoices": 1998,
+          "status_200": 3039
+        },
+        {
+          "month": "2025-12",
+          "requests": 45353,
+          "unique_invoices": 10179,
+          "status_200": 41829
+        }
+      ]
+    },
+    "EVID-003": {
+      "claim": "HTTP 200 responses indicate a conservative population potentially disclosed.",
+      "facts": {
+        "status_200": 44868,
+        "invoices_status_200": 10173,
+        "caveat": "Status alone does not prove response body or PII delivery."
+      }
+    },
+    "EVID-004": {
+      "claim": "The activity spans the complete observed window and all logged sites.",
+      "facts": {
+        "first_seen": "2025-10-01T00:00:00",
+        "last_seen": "2025-12-31T23:57:00",
+        "site_by_volume": {
+          "site_id": "MeliCO",
+          "requests": 1120465,
+          "unique_invoices": 8307,
+          "unique_ips": 5726,
+          "status_200": 196794,
+          "success_2xx_pct": 50.44
+        },
+        "site_by_unique_invoice": {
+          "site_id": "MeliMX",
+          "requests": 1120006,
+          "unique_invoices": 8320,
+          "unique_ips": 5726,
+          "status_200": 196673,
+          "success_2xx_pct": 50.44
+        },
+        "total_sites": 4
+      }
+    }
+  },
+  "assessment": "Classification: HIGH confidence of automated exploitation compatible with IDOR; MEDIUM confidence of PII disclosure.\n\nFive automated sources generated 61,961 requests with only 4 tokens and touched 10,181 distinct invoices [EVID-001]. The monthly progression was 2025-10: 1,488, 2025-11: 15,120, 2025-12: 45,353 [EVID-002]. There were 44,868 HTTP 200 responses spanning 10,173 invoices; this is a conservative potential-exposure set, not proof that response bodies contained PII [EVID-003]. The observed activity spans the entire three-month window and all four sites [EVID-004].\n\nImmediate actions: disable object access based solely on invoice_id; enforce server-side subject-to-object authorization; revoke the four implicated tokens; preserve CDN/WAF, application, identity and database logs; notify Legal/Privacy; and hunt for the five source fingerprints across the wider estate. Strategic actions: centralized authorization, negative access-control tests in CI, object-access audit trails, rate controls and anomaly alerts.",
+  "verification": {
+    "no_raw_tokens_sent": true,
+    "no_full_ips_sent": true,
+    "human_review_required": true
+  }
+}

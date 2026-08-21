@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.duckdb
+*.zip
+*.csv
+!results/public/*.csv
+!tests/fixtures/*.csv
+evidence/
+results/restricted/
+.env
+.ipwho_cache.json
